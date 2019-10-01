@@ -41,17 +41,35 @@ var questions = [
      },
     correct: "c"}   
 ]
+//PLACEHOLDER REMEMBER TO FIX
+$("#question1").hide();
+$("#question2").hide();
+$("#question3").hide();
+$("#question4").hide();
 
-$("#questions").hide();
 $("#results").hide();
+$("#reset").hide();
 
 $("#start").on("click", timer);
 $("#submit").on("click", finish);
 
+//CREATE RESET FUNCTION LINKING TO RETRY BUTTON
+$("#reset").on("click", reset);
+
 function timer() {
-    clearInterval(countDown);
     $("#start").hide();
-    $("#questions").show();
+    
+
+    $("#question1").show();
+    $("#question2").show();
+    $("#question3").show();
+    $("#question4").show();
+    
+    //$("#questions").show();
+    
+    $("#results").hide();
+    $("#timeRemaining").show();
+    clearInterval(countDown);    
     countDown = setInterval(decrement, 1000);
     $("#timeRemaining").html("<h2>Time Remaining: " + timeLeft + "</h2>")
 }
@@ -68,44 +86,46 @@ function decrement() {
     }
 }
 
-function stop () {
+function stop() {
     clearInterval(countDown);
 }
 
 function finish() {
+    $("#timeRemaining").hide();
+    $("#submit").hide();
+    
+    $("#question1").hide();
+    $("#question2").hide();
+    $("#question3").hide();
+    $("#question4").hide();
+    
+    
+    //$("#questions").hide();
     $("#results").show();
+    $("#reset").show();
     $("#correct").html("<h2>Correct Guesses: " + correct + "</h2>");
     $("#wrong").html("<h2>Wrong Guesses: " + wrong + "</h2>");
     $("#score").html("<h2>Total Score: " + correct + " out of " + wrong + "</h2>");
 
 }
 
+function reset() {
+    $("#timeRemaining").show();
+    $("#start").hide();
+    $("#results").hide();
+    $("#reset").hide();
+    $("#submit").show()
+    $("#question1").show();
+    $("#question2").show();
+    $("#question3").show();
+    $("#question4").show();
+    timeLeft = 60;
+    clearInterval(countDown);
+    countDown = setInterval(decrement, 1000);
+    $("#timeRemaining").html("<h2>Time Remaining: " + timeLeft + "</h2>");
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
