@@ -5,7 +5,42 @@ var timeLeft = 60;
 var countDown;
 var correct = 0;
 var wrong = 0;
-var finalScore = 0;
+
+//questions object
+var questions = [
+    {question: "Where in the human body would you find the medulla oblongata?",
+     answers: {
+         a: "The Brain",
+         b: "The Heart",
+         c: "The Soul",
+         d: "The Big Toe",
+     },
+    correct: "a"},
+    {question: "Les Fauves was a name given to a group of artists that included Matisse. What is its literal meaning?",
+     answers: {
+         a: "The Smelly Shoes",
+         b: "The Strongest Men",
+         c: "The Wild Beasts",
+         d: "The Oldest Secrets",
+     },
+    correct: "b"},
+    {question: "How many legs does a lobster have?",
+     answers: {
+         a: "Eight",
+         b: "Six",
+         c: "Twelve",
+         d: "Ten",
+     },
+    correct: "d"},
+    {question: "What is the family name of the ruling dynasty of Monaco?",
+     answers: {
+         a: "Sunni",
+         b: "Trivani",
+         c: "Grimaldi",
+         d: "Vivaldi",
+     },
+    correct: "c"}   
+]
 
 $("#questions").hide();
 $("#results").hide();
@@ -38,7 +73,11 @@ function stop () {
 }
 
 function finish() {
-    ("#results").show();
+    $("#results").show();
+    $("#correct").html("<h2>Correct Guesses: " + correct + "</h2>");
+    $("#wrong").html("<h2>Wrong Guesses: " + wrong + "</h2>");
+    $("#score").html("<h2>Total Score: " + correct + " out of " + wrong + "</h2>");
+
 }
 
 
