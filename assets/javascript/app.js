@@ -41,31 +41,32 @@ var questions = [
      },
     correct: "c"}   
 ]
-//PLACEHOLDER REMEMBER TO FIX
-$("#question1").hide();
-$("#question2").hide();
-$("#question3").hide();
-$("#question4").hide();
+
+// adds questions to headers with respective tags
+$("#question1").prepend(questions[0].question);
+$("#question2").prepend(questions[1].question);
+$("#question3").prepend(questions[2].question);
+$("#question4").prepend(questions[3].question);
+
+// $("#inlineradio1").prop("value", questions[0].answers.a);
+
+// PLACEHOLDER REMEMBER TO FIX
+$("#questioncontainer").hide()
 
 $("#results").hide();
 $("#reset").hide();
+$("#submit").hide();
 
 $("#start").on("click", timer);
 $("#submit").on("click", finish);
 
-//CREATE RESET FUNCTION LINKING TO RETRY BUTTON
+// CREATE RESET FUNCTION LINKING TO RETRY BUTTON
 $("#reset").on("click", reset);
 
 function timer() {
     $("#start").hide();
-    
-
-    $("#question1").show();
-    $("#question2").show();
-    $("#question3").show();
-    $("#question4").show();
-    
-    //$("#questions").show();
+    $("#submit").show();  
+    $("#questioncontainer").show();
     
     $("#results").hide();
     $("#timeRemaining").show();
@@ -88,19 +89,20 @@ function decrement() {
 
 function stop() {
     clearInterval(countDown);
+    $("#timeRemaining").hide();
+    $("#submit").hide();
+    $("#questioncontainer").hide();   
+    $("#results").show();
+    $("#reset").show();
+    $("#correct").html("<h2>Correct Guesses: " + correct + "</h2>");
+    $("#wrong").html("<h2>Wrong Guesses: " + wrong + "</h2>");
+    $("#score").html("<h2>Total Score: " + correct + " out of " + wrong + "</h2>");
 }
 
 function finish() {
     $("#timeRemaining").hide();
     $("#submit").hide();
-    
-    $("#question1").hide();
-    $("#question2").hide();
-    $("#question3").hide();
-    $("#question4").hide();
-    
-    
-    //$("#questions").hide();
+    $("#questioncontainer").hide();   
     $("#results").show();
     $("#reset").show();
     $("#correct").html("<h2>Correct Guesses: " + correct + "</h2>");
@@ -115,14 +117,12 @@ function reset() {
     $("#results").hide();
     $("#reset").hide();
     $("#submit").show()
-    $("#question1").show();
-    $("#question2").show();
-    $("#question3").show();
-    $("#question4").show();
+    $("#questioncontainer").show();
     timeLeft = 60;
     clearInterval(countDown);
     countDown = setInterval(decrement, 1000);
     $("#timeRemaining").html("<h2>Time Remaining: " + timeLeft + "</h2>");
+    $("input").prop('checked', false);
 
 
 }
