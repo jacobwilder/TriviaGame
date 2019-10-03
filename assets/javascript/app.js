@@ -18,7 +18,7 @@ $(document).ready(function () {
             correct: "The Brain"
         },
         {
-            question: "Les Fauves was a name given to a group of artists that included Matisse. What is its literal meaning?",
+            question: "Les Fauves was a name given to a group of artists that included Matisse. What is it's literal meaning?",
             answers: [
                 "Smelly Shoes",
                 "Strongest Men",
