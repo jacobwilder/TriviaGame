@@ -142,7 +142,8 @@ $(document).ready(function () {
     }
 
     function finish() {
-
+        clearInterval(countDown);
+        
         $("#timeRemaining").hide();
         $("#submit").hide();
         $("#questioncontainer").hide();
